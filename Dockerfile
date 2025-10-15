@@ -19,11 +19,8 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Switch back to coder user
 USER coder
-
-# Set working directory
 WORKDIR /home/coder/projects
-
-# Expose port
 EXPOSE 8080
+
+CMD ["code-server", "--bind-addr", "0.0.0.0:8080", "--auth", "none", "/home/coder/projects"]
